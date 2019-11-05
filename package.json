@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/danieljbuyinza/node-hello-world/issues"
   },
-  "homepage": "https://github.com/danieljbuyinza/node-hello-world#readme"
+  "homepage": "https://github.com/danieljbuyinza/node-hello-world#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
