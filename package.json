@@ -1,0 +1,19 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "First Node app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "danieljbuyinza",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieljbuyinza/node-hello-world.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danieljbuyinza/node-hello-world/issues"
+  },
+  "homepage": "https://github.com/danieljbuyinza/node-hello-world#readme"
+}
