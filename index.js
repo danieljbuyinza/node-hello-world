@@ -3,10 +3,14 @@
 const express = require("express")
 const app = express()
 
-app.listen(4000, function() {
-    console.log("listening on 4000")
+app.listen(2000, () => {
+    console.log("listening on 2000")
 })
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     res.send("Hello World")
+})
+
+app.get('/about', (req, res) => {
+    res.send("This is the about us page")
 })
