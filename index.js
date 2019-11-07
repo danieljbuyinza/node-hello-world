@@ -3,12 +3,23 @@
 const express = require("express")
 const app = express()
 
+const pug = require("pug")
+app.set("view engine", "pug")
+
 app.listen(3000, () => {
     console.log("listening on 3000")
 })
 
 app.get('/', (req, res) => {
-    res.send("Hello World")
+    res.render("form")
+})
+
+app.get('/registration', (req, res) => {
+    res.render("register")
+})
+
+app.get('/users', (req, res) => {
+    res.send("This is class " + req.query.class + " cohort " + req.query.cohort)
 })
 
 app.get('/about', (req, res) => {
