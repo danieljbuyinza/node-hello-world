@@ -14,9 +14,38 @@ html(lang="en")
                         h4.card-title Register
                     form
                         div.form-row
-                            div.col.form-group
+                            .col.form-group
                                 label First name
                                 input.form-control(name="firstName")
-                            div.col.form-group
+                            .col.form-group
                                 label Last name
                                 input.form-control(name="lastName")
+                        div.form-row
+                            .col.form-group
+                                label Email address
+                                input.form-control(type="email", name="emailAddress")
+                                p We'll never share your email with anyone else.
+                        div.form-row
+                            .col.form-group
+                                label.form-check.form-check-inline
+                                    input.form-check-input(type="radio", name="gender")
+                                    span.form-check-label Male
+                                label.form-check.form-check-inline
+                                    input.form-check-input(type="radio", name="gender")
+                                    span.form-check-label Female
+                        div.form-row
+                            .col.form-group
+                                label City
+                                input.form-control(name="city")
+                            .col.form-group
+                                label Country
+                                select.form-control(name="country")
+                                    option(value="Uganda") Uganda
+                                    option(value="United States") United States
+                        div.form-row
+                            .col.form-group
+                                label Create password
+                                input.form-control(type="password", name="password")
+                        div.form-row
+                            .col.form-group
+                                button#register-button.form-control.btn.btn-primary.btn-block(type="submit") Button
