@@ -12,7 +12,7 @@ html(lang="en")
                 div.card-body
                     header.card-header
                         h4.card-title Register
-                    form
+                    form(action="/register", method="POST")
                         div.form-row
                             .col.form-group
                                 label First name
@@ -28,10 +28,10 @@ html(lang="en")
                         div.form-row
                             .col.form-group
                                 label.form-check.form-check-inline
-                                    input.form-check-input(type="radio", name="gender")
+                                    input.form-check-input(type="radio", name="gender", value="Male")
                                     span.form-check-label Male
                                 label.form-check.form-check-inline
-                                    input.form-check-input(type="radio", name="gender")
+                                    input.form-check-input(type="radio", name="gender", value="Female")
                                     span.form-check-label Female
                         div.form-row
                             .col.form-group

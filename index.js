@@ -1,47 +1,50 @@
-//console.log("Hello World")
-
 const express = require("express")
+const bodyParser = require("body-parser")
+const mongoose = require("mongoose");
+const path = require("path")
+
+
 const app = express()
-
-const pug = require("pug")
 app.set("view engine", "pug")
+app.set("views", path.join(__dirname, "views"))
+app.use(bodyParser.urlencoded({extended: true}))
 
-app.listen(3000, () => {
-    console.log("listening on 3000")
-})
+// mongoose db connection
+mongoose.connect("mongodb://localhost:27017/hello-world", { useNewUrlParser: true });
 
-app.get('/', (req, res) => {
-    res.render("form")
-})
+// schema definition
+const registrationSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: "Please Enter first name"
+    },
+    lastName: String,
+    gender: String,
+    country: String,
+    city: String,
+});
+const Register = mongoose.model("Register", registrationSchema);
 
-app.get('/registration', (req, res) => {
+// routes
+app.get("/register", (req, res) => {
     res.render("register")
 })
 
-app.get('/users', (req, res) => {
-    res.send("This is class " + req.query.class + " cohort " + req.query.cohort)
+app.post("/register", (req, res) => {
+    const register = new Register(req.body);
+    register.save()
+    .then(item => {
+        Register.find().then(
+            items => {
+                res.render("list", {users:items})
+            }
+        )
+    })
+    .catch(err=>{
+        res.status(500).send("unable to save to database");
+    })
 })
 
-app.get('/about', (req, res) => {
-    res.send("This is the about us page")
-})
-
-app.post('/', (req, res) => {
-    res.send("Got a POST request")
-})
-
-app.put('/user', (req, res) => {
-    res.send("Got a PUT request at /user")
-})
-
-app.delete('/user', (req, res) => {
-    res.send("Got a DELETE request at /user")
-})
-
-app.get('/users/:name', (req, res) => {
-    res.send("Hello" + req.params.name)
-})
-
-app.get('*', (req, res) => {
-    res.send("Sorry, we didn't find that page")
+app.listen(3000, function() {
+    console.log("Server listening on 3000")
 })
